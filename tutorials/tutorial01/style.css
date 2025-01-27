@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@500=swap");
+
+:root {
+  --black: #01161eff;
+  --dk-green: #124559ff;
+  --blue: #598392ff;
+  --gray: #aec3b0ff;
+  --beige: #eff6e0ff;
+}
+
+body {
+  font-family: "Dosis", sans-serif;
+  font-size: larger;
+  color: var(--dk-green);
+  margin: 0;
+  background-color: var(--beige);
+}
+
+.navbar {
+  padding: 20px;
+  background-color: var(--dk-green);
+  color: var(--beige);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: var(--blue) 8px solid;
+}
+
+a:visited {
+  color: var(--beige);
+}
+
+h1 {
+  font-family: "Finger Paint", cursive;
+  color: var(--dk-green);
+  text-align: center;
+}
+
+.navbar a,
+.navbar strong {
+  font-family: "Finger Paint", cursive;
+  font-size: larger;
+  margin-right: 15px;
+}
+
+.photo-section {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+}
+.photo-section img {
+  width: 32%;
+  margin-right: 1.3%;
+}
+
+.music-section {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.music-section iframe {
+  width: 30%;
+  padding: 10px;
+}
+
+main {
+  padding-right: 10vw;
+  padding-left: 10vw;
+}
