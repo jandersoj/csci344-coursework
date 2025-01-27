@@ -40,6 +40,7 @@ h1 {
 .navbar a,
 .navbar strong {
   font-family: "Finger Paint", cursive;
+  color: var(--beige);
   font-size: larger;
   margin-right: 15px;
 }
