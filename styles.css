@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Gugi&display=swap");
+
+:root {
+  --black: #01161eff;
+  --dk-green: #124559ff;
+  --blue: #598392ff;
+  --gray: #aec3b0ff;
+  --beige: #eff6e0ff;
+}
+
+body {
+  font-family: "Gugi", sans-serif;
+  color: var(--dk-green);
+  background-color: var(--beige);
+  margin: 0;
+}
+
+header {
+  color: var(--beige);
+  background-color: var(--dk-green);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+div {
+  width: 30vw;
+  height: 70vh;
+  padding: 10px;
+  background-color: var(--blue);
+  font-size: 20px;
+  color: var(--beige);
+  border: 5px solid var(--dk-green);
+  border-radius: 3%;
+}
+
+div h1 {
+  font-size: larger;
+}
