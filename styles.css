@@ -24,7 +24,7 @@ body {
 }
 
 header {
-  height: 8vh;
+  height: fit-content;
   color: var(--beige);
   background-color: var(--dk-green);
   display: flex;
@@ -32,7 +32,6 @@ header {
   justify-content: space-around;
   margin-bottom: 10px;
   border-bottom: var(--blue) 8px solid;
-  font-size: 90%;
 }
 
 main {
@@ -53,5 +52,5 @@ main {
 }
 
 div h1 {
-  font-size: larger;
+  font-size: large;
 }
