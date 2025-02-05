@@ -32,6 +32,7 @@ header {
   justify-content: space-around;
   margin-bottom: 10px;
   border-bottom: var(--blue) 8px solid;
+  font-size: 6vh;
 }
 
 main {
