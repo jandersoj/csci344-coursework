@@ -1,0 +1,43 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: lightgray;
+  height: 90vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 10% 80%;
+}
+
+main {
+  background-color: rgb(179, 177, 177);
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 30px, auto;
+  height: 100ch;
+  width: 100%;
+  margin-top: 8ch;
+}
+
+div,
+section {
+  border: 2px solid palevioletred;
+}
+
+#navbar {
+  height: 100ch;
+  width: 100%;
+  position: fixed;
+}
+
+#content {
+}
+
+#suggested {
+  grid-template-columns: 80px auto 80px;
+}
+
+#stories {
+  height: 15vh;
+}
+
+#post {
+}
