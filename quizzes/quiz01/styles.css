@@ -27,13 +27,14 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 1%;
+  padding-right: 5vw;
 }
 
 nav {
   display: flex;
   justify-content: space-between;
-  padding-right: 30px;
+  /* padding-right: 30px; */
 }
 
 nav a {
