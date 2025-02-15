@@ -104,9 +104,23 @@ h3 {
 
 .post {
   background-color: white;
-  border: 1px black solid;
+  /* border: 1px black solid; */
   padding: 2%;
   margin-bottom: 1%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.post_header {
+  padding: 5%;
+  display: flex;
+  flex-direction: row;
+  align-content: space-evenly;
+}
+
+.post > img {
+  width: 104.5%;
 }
 
 /* Mobile Version */
