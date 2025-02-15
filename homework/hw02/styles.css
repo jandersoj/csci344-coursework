@@ -62,14 +62,51 @@ h6 {
 }
 
 #suggested {
-  grid-template-columns: 80px auto 80px;
-  /* border: black 1px solid; */
-  margin: 2%;
-  margin-top: 0.7%; /*wtf is thisss im so tired*/
+  /* border: 1px green solid; */
+  margin-top: 1vh;
+  margin-right: 2vw;
+  display: flex;
+  flex-direction: column;
+
   height: 80vh;
   width: 30vw;
   position: fixed;
   justify-self: end;
+}
+
+#user {
+  /* border: 1px rgb(94, 39, 48) solid; */
+  display: inline-flex;
+  align-items: center;
+}
+
+#user > h1 {
+  padding-left: 5%;
+}
+
+#suggested-accounts {
+  height: 70vh;
+}
+
+.suggestion {
+  /* border: 1px solid blue; */
+  width: 80%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.username > p {
+  font-size: medium;
+  color: rgb(112, 112, 112);
+  padding: 0;
+  margin: 0;
+}
+
+.username > p > strong {
+  font-size: large;
+  color: black;
 }
 
 #stories {
@@ -88,7 +125,7 @@ h6 {
   width: 80px;
 }
 
-.story_post {
+.story-post {
   /* border: 1px solid darkcyan; */
   height: fit-content;
   width: 90px;
@@ -96,14 +133,14 @@ h6 {
   justify-items: center;
 }
 
-.story_post > p {
+.story-post > p {
   font-size: smaller;
   color: rgb(95, 95, 95);
 
   margin: 0;
 }
 
-.story_post > img {
+.story-post > img {
   border: 3px solid lightgray;
 }
 
@@ -124,7 +161,7 @@ h6 {
   align-items: center;
 }
 
-.post_header {
+.post-header {
   display: flex;
   height: min-content;
   width: 95%;
@@ -138,17 +175,17 @@ h6 {
   margin: 10px;
 }
 
-.post_description {
+.post-description {
   width: 95%;
   padding: 2%;
   padding-bottom: 0;
 }
 
-.post_description > strong {
+.post-description > strong {
   padding-bottom: 1%;
 }
 
-.post_icons {
+.post-icons {
   font-size: 25pt;
   width: 100%;
   height: fit-content;
@@ -159,7 +196,7 @@ h6 {
   margin-bottom: 2%;
 }
 
-.post_icons > p {
+.post-icons > p {
   margin: 0;
   padding: 0;
 }
@@ -172,7 +209,7 @@ h6 {
   margin: 1%;
 }
 
-.comment_box {
+.comment-box {
   height: fit-content;
   width: 94%;
   border-top: 1px rgb(112, 112, 112) solid;
@@ -186,7 +223,7 @@ h6 {
   padding-right: 3%;
 }
 
-.comment_box > div {
+.comment-box > div {
   display: flex;
   flex-direction: row;
   width: 27%;
@@ -199,12 +236,19 @@ h6 {
     height: auto;
     grid-template-rows: auto;
   }
-
+  #suggested {
+    display: none;
+  }
   main {
     display: flex;
     flex-direction: column;
     height: auto;
     margin-top: 4ch;
+  }
+
+  #content {
+    padding: 0%;
+    margin: 5%;
   }
 
   #navbar {
