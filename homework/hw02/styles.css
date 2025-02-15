@@ -7,7 +7,7 @@ body {
 }
 
 main {
-  background-color: rgb(179, 177, 177);
+  background-color: lightgrey;
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-template-rows: 50vh, auto;
@@ -16,7 +16,7 @@ main {
 }
 
 header {
-  background-color: lightgray;
+  background-color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -46,6 +46,11 @@ a:focus {
   text-decoration: none;
 }
 
+h1,
+h2,
+h3 {
+  font-family: "Comfortaa", sans-serif;
+}
 #content {
   border: black 1px solid;
   padding-left: 10%;
@@ -58,20 +63,38 @@ a:focus {
 }
 
 #stories {
-  height: 15vh;
+  height: fit-content;
   border: black 1px solid;
   display: flex;
   padding: 1%;
   margin: 1%;
   align-items: center;
+  background-color: white;
+}
+
+.pfp {
+  border-radius: 80px;
+  height: 80px;
+  width: 80px;
 }
 
 .story_post {
-  border: 1px solid darkcyan;
+  /* border: 1px solid darkcyan; */
   height: fit-content;
-  width: fit-content;
-
+  width: 90px;
   margin: 0.5%;
+  justify-items: center;
+}
+
+.story_post > p {
+  font-size: small;
+  color: rgb(95, 95, 95);
+
+  margin: 0;
+}
+
+.story_post > img {
+  border: 3px solid lightgray;
 }
 
 #posts {
@@ -80,8 +103,10 @@ a:focus {
 }
 
 .post {
+  background-color: white;
   border: 1px black solid;
-  margin: 1%;
+  padding: 2%;
+  margin-bottom: 1%;
 }
 
 /* Mobile Version */
