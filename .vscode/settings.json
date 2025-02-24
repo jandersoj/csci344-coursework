@@ -2,5 +2,6 @@
     "vscode-pets.throwBallWithMouse": true,
     "vscode-pets.theme": "forest",
     "vscode-pets.petType": "horse",
-    "vscode-pets.petSize": "medium"
+    "vscode-pets.petSize": "medium",
+    "liveServer.settings.port": 5501
 }
