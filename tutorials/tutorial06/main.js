@@ -21,14 +21,13 @@ const isClassFull = (course) => {
 
 // Part 1.1b
 const doesTermMatch = (course) => {
-  if (course.Title.toLowerCase().includes(searchTerm.toLowerCase()))
-    // modify this to accurately apply the filter:
-    return true;
+  if (course.Title.toLowerCase().includes(searchTerm.toLowerCase())) return true;
+  if (course.Code.toLowerCase().includes(searchTerm.toLowerCase())) return true;
+  if (course.Instructors[0].Name.toLowerCase().includes(searchTerm.toLowerCase())) return true;
 };
 
 // Part 1.2
 const dataToHTML = (course) => {
-  // modify this to be more detailed
   let seatsAvailable = course.EnrollmentMax - course.EnrollmentCurrent;
   if (seatsAvailable < 0) seatsAvailable = 0;
 
@@ -55,7 +54,7 @@ const dataToHTML = (course) => {
     `;
 };
 
-// Part 2
+// Part 2sarah
 const showMatchingCourses = () => {
   console.log(`Search term: ${searchTerm}`);
   console.log(`Only show open classes: ${openOnly}`);
@@ -70,6 +69,10 @@ const showMatchingCourses = () => {
     matches = matches.filter((course) => !isClassFull(course));
   }
 
+  if (matches.length === 0) {
+    container.innerHTML = `<p>No matching courses found.</p>`;
+    return;
+  }
   matches.forEach((course) => {
     const snippet = dataToHTML(course);
     container.insertAdjacentHTML("beforeend", snippet);
