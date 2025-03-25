@@ -1,0 +1,25 @@
+.profile {
+  background-color: rgb(122, 118, 182);
+  color: antiquewhite;
+  height: fit-content;
+  width: fit-content;
+  padding: 10px;
+}
+
+.profile h1 {
+  font-size: 20px;
+}
+
+.profile img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+/* tee hee didnt want to make another .css */
+.profiles {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
