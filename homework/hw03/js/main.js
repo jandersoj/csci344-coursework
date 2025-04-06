@@ -45,7 +45,7 @@ async function getStories() {
 function renderStory(storyJSON) {
   const template = `
         <div class="flex flex-col justify-center items-center">
-          <img src="${storyJSON.user.image_url}" class="rounded-full border-4 border-gray-300" />
+          <img src="${storyJSON.user.image_url}" alt="${storyJSON.user.username}'s profile picture" class="rounded-full border-4 border-gray-300" />
           <p class="text-xs text-gray-500">${storyJSON.user.username}</p>
         </div>
     `;
@@ -74,7 +74,7 @@ async function getProfile() {
 function renderProfile(profileJSON) {
   const template = `    
   <header class="flex gap-4 items-center">
-      <img src="${profileJSON.image_url}" class="rounded-full w-16" />
+      <img src="${profileJSON.image_url}" alt="${profileJSON.username}'s profile picture" class="rounded-full w-16" />
       <h2 class="font-Comfortaa font-bold text-2xl">${profileJSON.username}</h2>
     </header>
   `;
@@ -98,12 +98,12 @@ async function getSuggestions() {
 
 function renderSuggestion(suggestionJSON) {
   const template = ` <section class="flex justify-between items-center mb-4 gap-2">
-        <img src="${suggestionJSON.image_url}" class="rounded-full w-16" />
+        <img src="${suggestionJSON.image_url}" alt="${suggestionJSON.username}'s profile picture}" class="rounded-full w-16" />
         <div class="w-[180px]">
           <p class="font-bold text-sm">${suggestionJSON.username}</p>
-          <p class="text-gray-500 text-xs">suggested for you</p>
+          <p class="text-gray-800 text-xs">suggested for you</p>
         </div>
-        <button class="text-blue-500 text-sm py-2">follow</button>
+        <button class="text-blue-800 text-sm py-2">follow</button>
       </section>
     `;
   const container = document.querySelector("aside");
@@ -128,21 +128,25 @@ async function getPosts() {
   renderPosts(data);
 }
 
+function tempOnClick(label) {
+  console.log(`${label} button clicked`);
+}
+
 function renderPost(postJSON) {
   const template = `
         <section class="bg-white border mb-10">
             <div class="p-4 flex justify-between">
                 <h3 class="text-lg font-Comfortaa font-bold">${postJSON.user.username}</h3>
-                <button class="icon-button"><i class="fas fa-ellipsis-h"></i></button>
+                <button class="icon-button" aria-label="More options"><i class="fas fa-ellipsis-h"></i></button>
             </div>
-            <img src="${postJSON.image_url}" alt="placeholder image" width="300" height="300"
+            <img src="${postJSON.image_url}" alt="image posted by ${postJSON.user.username}" width="300" height="300"
                 class="w-full bg-cover">
             <div class="p-4">
                 <div class="flex justify-between text-2xl mb-3">
                     <div>
-                        <button><i class="far fa-heart"></i></button>
-                        <button><i class="far fa-comment"></i></button>
-                        <button><i class="far fa-paper-plane"></i></button>
+                        ${renderLikeButton(postJSON)}
+                        <button aria-label="Comment"><i class="far fa-comment"></i></button>
+                        <button aria-label="Share"><i class="far fa-paper-plane"></i></button>
                     </div>
                     <div>
                         ${renderBookmarkButton(postJSON)}
@@ -152,25 +156,18 @@ function renderPost(postJSON) {
                 <div class="text-sm mb-3">
                     <p>
                         <strong>${postJSON.user.username}</strong>
-                        ${postJSON.caption} <button class="button">more</button>
+                        ${postJSON.caption} <button class="button" aria-label="Read more">more</button>
                     </p>
                 </div>
-                <p class="text-sm mb-3">
-                    <strong>lizzie</strong>
-                    Here is a comment text text text text text text text text.
-                </p>
-                <p class="text-sm mb-3">
-                    <strong>vanek97</strong>
-                    Here is another comment text text text.
-                </p>
-                <p class="uppercase text-gray-500 text-xs">1 day ago</p>
+                ${showComments(postJSON.comments)}
+                <p class="uppercase text-gray-600 text-xs">1 day ago</p>
             </div>
             <div class="flex justify-between items-center p-3">
                 <div class="flex items-center gap-3 min-w-[80%]">
                     <i class="far fa-smile text-lg"></i>
-                    <input type="text" class="min-w-[80%] focus:outline-none" placeholder="Add a comment...">
+                    <input aria-label="add a comment" type="text" class="min-w-[80%] focus:outline-none" placeholder="Add a comment...">
                 </div>
-                <button class="text-blue-500 py-2">Post</button>
+                <button class="text-blue-600 py-2" aria-label="Post comment">Post</button>
             </div>
         </section>
     `;
@@ -183,26 +180,54 @@ function renderPosts(postListJSON) {
   postListJSON.forEach(renderPost);
 }
 
-function renderBookmarkButton(postJSON) {
-  let template = "";
-  if (postJSON.current_user_bookmark_id) {
-    template = `
-          <button onclick="window.deleteBookmark(${postJSON.current_user_bookmark_id}, ${postJSON.id})">
-              <i class="fas fa-bookmark"></i>
-          </button>
-      `;
-  } else {
-    template = `
-          <button onclick="window.createBookmark(${postJSON.id})">
-              <i class="far fa-bookmark"></i>
-          </button>
-      `;
+function showComments(comments) {
+  const lastComment = comments[comments.length - 1];
+
+  if (comments.length > 1) {
+    return `
+    <button class="text-sm mb-3"> view all ${comments.length} comments</button>
+    <p class="text-sm mb-3">
+      <strong>
+        ${lastComment.user.username} </strong>${lastComment.text}
+    </p>
+    `;
   }
-  return template;
+  if (comments.length === 1) {
+    return `
+       <p class="text-sm mb-3">
+      <strong>
+        ${lastComment.user.username} </strong>${lastComment.text}
+    </p>
+    `;
+  }
+
+  return ``;
 }
 
-//await / async syntax:
-//await / async syntax:
+// function renderCommentButton(post) {
+//   return `
+//     <button onclick="tempOnClick('comment')">
+//       <i class="far fa-comment"></i>
+//     </button>
+//   `;
+// }
+// function renderShareButton(post) {}
+function renderBookmarkButton(post) {
+  if (post.current_user_bookmark_id) {
+    return `
+      <button aria-label="Un-bookmark" onclick="deleteBookmark(${post.current_user_bookmark_id})">
+        <i class="fa-solid fa-bookmark"></i>
+      </button>
+  `;
+  } else {
+    return `
+      <button aria-label="Bookmark" onclick="createBookmark(${post.id})">
+        <i class="far fa-bookmark"></i>
+      </button>
+  `;
+  }
+}
+
 window.createBookmark = async function (postId) {
   const postData = {
     post_id: postId,
@@ -221,7 +246,7 @@ window.createBookmark = async function (postId) {
 
 window.deleteBookmark = async function (bookmarkId) {
   //in theory this should work but currently it returns a bunch of big red errors
-  const response = await fetch(`https://photo-app-secured.herokuapp.com/api/bookmarks/${bookmarkId}/`, {
+  const response = await fetch(`https://photo-app-secured.herokuapp.com/api/bookmarks/${bookmarkId}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
@@ -235,22 +260,20 @@ window.deleteBookmark = async function (bookmarkId) {
   }
 };
 
-function renderLikeButton(postJSON) {
-  let template = "";
-  if (postJSON.current_user_like_id) {
-    template = `
-            <button onclick="window.deleteLike(${postJSON.current_user_like_id})">
-                <i class="fas fa-heart"></i>
-            </button>
-        `;
+function renderLikeButton(post) {
+  if (post.current_user_like_id) {
+    return `
+      <button aria-label="Unlike" onclick="deleteLike(${post.current_user_like_id})">
+        <i class="fa-solid fa-heart text-red-500"></i>
+      </button>
+  `;
   } else {
-    template = `
-            <button onclick="window.createLike(${postJSON.id})">
-                <i class="far fa-heart"></i>
-            </button>
-        `;
+    return `
+      <button aria-label="Like" onclick="createLike(${post.id})">
+        <i class="far fa-heart"></i>
+      </button>
+  `;
   }
-  return template;
 }
 
 //await / async syntax:
