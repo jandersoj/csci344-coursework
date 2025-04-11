@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Top Restaurant</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css
+" />
+    <link rel="stylesheet" href="/static/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Top Restaurant</title>
+  </head>
+
+  <body>
+    {% include 'includes/header.html' %}
+
+    <main>
+      <p>Search location: {{location}}</p>
+      <p>Search term: {{search_term or 'None Specified'}}</p>
+      <br />
+
+      <h2>Top Restaurant:</h2>
+      <section class="card" style="border: solid 2px black; width: fit-content">
+        <!-- <h1>{{ restaurant.get('name') }}</h1> -->
+        <h1 style="padding: 5px">{{ restaurant.name }}</h1>
+
+        <img src="{{restaurant.image_url}}" style="width: 400px" />
+
+        <div style="margin: 10px">
+          <p style="font-size: larger">{{restaurant.display_address }}</p>
+          <table style="width: 150px">
+            <tr>
+              <td>Price:</td>
+              <td><b> {{restaurant.price}} </b></td>
+            </tr>
+            <tr>
+              <td>Rating:</td>
+              <td><b>{{restaurant.rating}}</b></td>
+            </tr>
+            <tr>
+              <td># Reviews:</td>
+              <td><b>{{restaurant.review_count}}</b></td>
+            </tr>
+          </table>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
